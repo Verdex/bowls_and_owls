@@ -28,7 +28,7 @@ impl Game for G {
         let mut present = vec![];
         for i in 0..a.len() {
             if a[i] == u[i] {
-                r[i] = Guess::Correct(a[i])
+                r[i] = Guess::Correct(u[i])
             }
             else {
                 present.push(a[i]);
@@ -36,8 +36,8 @@ impl Game for G {
         }
 
         for i in 0..a.len() {
-            if a[i] != u[i] {
-                present.contains(&u[i]);
+            if a[i] != u[i] && present.contains(&u[i]) {
+                r[i] = Guess::Present(u[i])
             }
         }
 
