@@ -17,13 +17,13 @@ pub fn format_guess(guess : &Vec<Guess>) -> String {
     guess.iter().map(x).collect()
 }
 
-pub trait Word {
+pub trait Game {
     fn evaluate_guess(&mut self, user_guess : &str) -> Vec<Guess>;
     fn letter_count(&self) -> usize;
     fn next_word(&mut self);
 }
 
-pub trait Rules {
+pub trait Score {
     fn score_guess(&mut self, guess : &Vec<Guess>);
     fn should_continue(&self) -> bool;
     fn score(&self) -> i64;
