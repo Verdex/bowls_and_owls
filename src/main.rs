@@ -2,6 +2,8 @@
 mod game;
 mod word;
 
+mod standard_game;
+
 use std::io;
 
 
