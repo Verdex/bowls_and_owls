@@ -19,6 +19,8 @@ fn main() -> io::Result<()> {
     loop {
         let x = read_line()?;
 
+        // TODO tab the Displayed guess so that it doesnt get confused for user input
+
         println!("{}", x.len());
     }
     Ok(())
