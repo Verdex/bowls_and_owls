@@ -1,5 +1,6 @@
 
 mod game;
+mod word;
 
 use std::io;
 
