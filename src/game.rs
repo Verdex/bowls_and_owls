@@ -5,8 +5,8 @@ pub enum Guess {
     Wrong,
 }
 
-pub fn format_guess(guess : Vec<Guess>) -> String {
-    fn x(g : Guess) -> String {
+pub fn format_guess(guess : &Vec<Guess>) -> String {
+    fn x(g : &Guess) -> String {
         match g {
             Guess::Correct(c) => format!("|{c}|"),
             Guess::Present(c) => format!("~{c}~"),
@@ -14,9 +14,17 @@ pub fn format_guess(guess : Vec<Guess>) -> String {
         }
     }
 
-    guess.into_iter().map(x).collect()
+    guess.iter().map(x).collect()
 }
 
-pub trait Game {
-    fn evaluate_guess(&mut self, user_guess : &str, right_answer : &str) -> Vec<Guess>;
+pub trait Word {
+    fn evaluate_guess(&mut self, user_guess : &str) -> Vec<Guess>;
+    fn letter_count(&self) -> usize;
+    fn next_word(&mut self);
+}
+
+pub trait Rules {
+    fn score_guess(&mut self, guess : &Vec<Guess>);
+    fn should_continue(&self) -> bool;
+    fn score(&self) -> i64;
 }
