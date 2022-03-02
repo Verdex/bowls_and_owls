@@ -9,7 +9,7 @@ pub fn get_words() -> HashMap<usize, Vec<&'static str>> {
         let l = word.len();
         match r.get_mut(&l) {
             Some(v) => v.push(word),
-            None => { r.insert(l, vec![]); },
+            None => { r.insert(l, vec![word]); },
         }
     }
     r
