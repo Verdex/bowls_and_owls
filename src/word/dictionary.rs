@@ -16,7 +16,7 @@ impl Standard {
     }
 
     pub fn word(&mut self, length : usize) -> &'static str {
-        let words = self.words.get(&length).expect("Standard Dictionary failed to get words of length {length}");
+        let words = self.words.get(&length).expect(&format!("Standard Dictionary failed to get words of length {length}"));
         let index = self.rng.gen_range(0..words.len());
         words[index]
     }
