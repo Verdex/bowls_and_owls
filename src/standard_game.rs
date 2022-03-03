@@ -11,10 +11,10 @@ pub struct G {
 impl G {
     pub fn new() -> Self {
         let mut words = Standard::new();
-        let current = words.word(3).to_string();
+        let current = words.word(5).to_string();
         G { words
           , current 
-          , length: 3
+          , length: 5
           }
     }
 }
