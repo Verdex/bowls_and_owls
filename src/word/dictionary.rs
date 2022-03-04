@@ -15,7 +15,7 @@ impl Standard {
                  }
     }
 
-    pub fn word(&mut self, length : usize) -> Option<&'static str> {
+    pub fn get_word(&mut self, length : usize) -> Option<&'static str> {
         let words = self.words.get(&length)?;
         let index = self.rng.gen_range(0..words.len());
         Some(words[index])

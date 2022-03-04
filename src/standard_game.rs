@@ -50,7 +50,7 @@ impl Game for G {
     fn next_word(&mut self) -> bool {
         self.length += 1;
 
-        let next = match self.words.word(self.length) {
+        let next = match self.words.get_word(self.length) {
             Some(w) => w.to_string(),
             None => { return false; },
         };
