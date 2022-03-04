@@ -23,7 +23,7 @@ impl Game for G {
     fn evaluate_guess(&mut self, user_guess : &str) -> Vec<Guess> {
         let a = self.current.chars().collect::<Vec<char>>();
         let u = user_guess.chars().collect::<Vec<char>>();
-        let mut r = (0..a.len()).map(|_| Guess::Wrong).collect::<Vec<Guess>>();
+        let mut r = a.iter().map(|x| Guess::Wrong(*x)).collect::<Vec<Guess>>();
 
         let mut present = vec![];
         for i in 0..a.len() {
@@ -63,7 +63,7 @@ mod test {
         let mut g = G { length: 4, current: "RRBB".to_string(), words: Standard::new()};
         let guess = g.evaluate_guess("XXXX");
 
-        assert!( matches!(&guess[..], [Guess::Wrong, Guess::Wrong, Guess::Wrong, Guess::Wrong]) );
+        assert!( matches!(&guess[..], [Guess::Wrong(_), Guess::Wrong(_), Guess::Wrong(_), Guess::Wrong(_)]) );
     }
 
     #[test]
@@ -71,7 +71,7 @@ mod test {
         let mut g = G { length: 4, current: "XAAA".to_string(), words: Standard::new()};
         let guess = g.evaluate_guess("XBBB");
 
-        assert!( matches!(&guess[..], [Guess::Correct(_), Guess::Wrong, Guess::Wrong, Guess::Wrong]) );
+        assert!( matches!(&guess[..], [Guess::Correct(_), Guess::Wrong(_), Guess::Wrong(_), Guess::Wrong(_)]) );
     }
 
     #[test]
@@ -79,7 +79,7 @@ mod test {
         let mut g = G { length: 4, current: "XAAY".to_string(), words: Standard::new()};
         let guess = g.evaluate_guess("XBBY");
 
-        assert!( matches!(&guess[..], [Guess::Correct(_), Guess::Wrong, Guess::Wrong, Guess::Correct(_)]) );
+        assert!( matches!(&guess[..], [Guess::Correct(_), Guess::Wrong(_), Guess::Wrong(_), Guess::Correct(_)]) );
     }
 
     #[test]
@@ -87,7 +87,7 @@ mod test {
         let mut g = G { length: 4, current: "XAZY".to_string(), words: Standard::new()};
         let guess = g.evaluate_guess("XBZY");
 
-        assert!( matches!(&guess[..], [Guess::Correct(_), Guess::Wrong, Guess::Correct(_), Guess::Correct(_)]) );
+        assert!( matches!(&guess[..], [Guess::Correct(_), Guess::Wrong(_), Guess::Correct(_), Guess::Correct(_)]) );
     }
 
     #[test]
@@ -103,7 +103,7 @@ mod test {
         let mut g = G { length: 4, current: "ZAZZ".to_string(), words: Standard::new()};
         let guess = g.evaluate_guess("XXXA");
 
-        assert!( matches!(&guess[..], [Guess::Wrong, Guess::Wrong, Guess::Wrong, Guess::Present(_)]) );
+        assert!( matches!(&guess[..], [Guess::Wrong(_), Guess::Wrong(_), Guess::Wrong(_), Guess::Present(_)]) );
     }
 
     #[test]
@@ -111,7 +111,7 @@ mod test {
         let mut g = G { length: 4, current: "ZAZB".to_string(), words: Standard::new()};
         let guess = g.evaluate_guess("BXXA");
 
-        assert!( matches!(&guess[..], [Guess::Present(_), Guess::Wrong, Guess::Wrong, Guess::Present(_)]) );
+        assert!( matches!(&guess[..], [Guess::Present(_), Guess::Wrong(_), Guess::Wrong(_), Guess::Present(_)]) );
     }
 
     #[test]
@@ -119,7 +119,7 @@ mod test {
         let mut g = G { length: 4, current: "CAZB".to_string(), words: Standard::new()};
         let guess = g.evaluate_guess("BCXA");
 
-        assert!( matches!(&guess[..], [Guess::Present(_), Guess::Present(_), Guess::Wrong, Guess::Present(_)]) );
+        assert!( matches!(&guess[..], [Guess::Present(_), Guess::Present(_), Guess::Wrong(_), Guess::Present(_)]) );
     }
 
     #[test]
@@ -135,7 +135,7 @@ mod test {
         let mut g = G { length: 4, current: "RRBB".to_string(), words: Standard::new()};
         let guess = g.evaluate_guess("RRRX");
 
-        assert!( matches!(&guess[..], [Guess::Correct(_), Guess::Correct(_), Guess::Wrong, Guess::Wrong]) );
+        assert!( matches!(&guess[..], [Guess::Correct(_), Guess::Correct(_), Guess::Wrong(_), Guess::Wrong(_)]) );
     }
 
     #[test]
@@ -143,7 +143,7 @@ mod test {
         let mut g = G { length: 4, current: "RRBR".to_string(), words: Standard::new()};
         let guess = g.evaluate_guess("RRRX");
 
-        assert!( matches!(&guess[..], [Guess::Correct(_), Guess::Correct(_), Guess::Present(_), Guess::Wrong]) );
+        assert!( matches!(&guess[..], [Guess::Correct(_), Guess::Correct(_), Guess::Present(_), Guess::Wrong(_)]) );
     }
 
     #[test]
@@ -151,7 +151,7 @@ mod test {
         let mut g = G { length: 4, current: "ABDB".to_string(), words: Standard::new()};
         let guess = g.evaluate_guess("ABBX");
 
-        assert!( matches!(&guess[..], [Guess::Correct(_), Guess::Correct(_), Guess::Present(_), Guess::Wrong]) );
+        assert!( matches!(&guess[..], [Guess::Correct(_), Guess::Correct(_), Guess::Present(_), Guess::Wrong(_)]) );
     }
 
     #[test]
@@ -159,6 +159,6 @@ mod test {
         let mut g = G { length: 4, current: "RRBB".to_string(), words: Standard::new()};
         let guess = g.evaluate_guess("RRRB");
 
-        assert!( matches!(&guess[..], [Guess::Correct(_), Guess::Correct(_), Guess::Wrong, Guess::Correct(_)]) );
+        assert!( matches!(&guess[..], [Guess::Correct(_), Guess::Correct(_), Guess::Wrong(_), Guess::Correct(_)]) );
     }
 }

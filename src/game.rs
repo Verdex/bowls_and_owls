@@ -2,7 +2,7 @@
 pub enum Guess { 
     Correct(char),
     Present(char),
-    Wrong,
+    Wrong(char),
 }
 
 pub fn format_guess(guess : &Vec<Guess>) -> String {
@@ -10,7 +10,7 @@ pub fn format_guess(guess : &Vec<Guess>) -> String {
         match g {
             Guess::Correct(c) => format!("|{c}|"),
             Guess::Present(c) => format!("~{c}~"),
-            Guess::Wrong => " _ ".to_string(),
+            Guess::Wrong(_) => " _ ".to_string(),
         }
     }
 
