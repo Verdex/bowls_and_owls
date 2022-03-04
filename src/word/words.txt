@@ -83,6 +83,7 @@ sip
 sky
 tan
 tea
+ten
 tin
 tip
 top
@@ -96,6 +97,7 @@ win
 wow
 yak
 yes
+zap
 zoo
 acid
 also
@@ -147,6 +149,7 @@ cent
 chew
 chin
 chip
+chop
 chow
 coal
 code
@@ -465,6 +468,8 @@ chill
 chose
 clean
 clear
+climb
+cling
 clock
 close
 cloud
@@ -851,6 +856,7 @@ python
 rabbit
 random
 raptor
+really
 reduce
 render
 repeat
@@ -1029,6 +1035,7 @@ require
 reverse
 rooster
 science
+serpent
 session
 shampoo
 snowman
@@ -1040,13 +1047,13 @@ strange
 success
 suggest
 sweater
+tenuous
 thought
 thunder
 tornado
 torrent
 trumpet
 typical
-umbrela
 utilize
 vaguely
 vehicle
@@ -1098,7 +1105,6 @@ graphics
 guardian
 hardware
 humanity
-icecream
 interval
 maintain
 minutiae
@@ -1124,7 +1130,6 @@ register
 relative
 religion
 research
-satalite
 scenario
 semantic
 sentence
@@ -1145,6 +1150,7 @@ transmit
 triangle
 trousers
 tutorial
+umbrella
 universe
 vacation
 whatever
@@ -1204,6 +1210,7 @@ preoccupy
 rectangle
 reduction
 reference
+satellite
 saxophone
 situation
 sometimes
@@ -1231,6 +1238,7 @@ obliterate
 permission
 profession
 protection
+serpentine
 statistics
 subjective
 television
