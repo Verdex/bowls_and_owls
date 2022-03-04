@@ -22,9 +22,3 @@ pub trait Game {
     fn letter_count(&self) -> usize;
     fn next_word(&mut self);
 }
-
-pub trait Score {
-    fn score_guess(&mut self, guess : &Vec<Guess>);
-    fn should_continue(&self) -> bool;
-    fn score(&self) -> i64;
-}

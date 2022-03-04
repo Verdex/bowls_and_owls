@@ -1,5 +1,5 @@
 
-use crate::game::{Guess, Game, Score};
+use crate::game::{Guess, Game};
 use crate::word::Standard;
 
 pub struct G {
@@ -51,32 +51,6 @@ impl Game for G {
     fn next_word(&mut self) {
         self.length += 1;
         self.current = self.words.word(self.length).to_string();
-    }
-}
-
-pub struct S {
-    retries : isize,
-}
-
-impl S { 
-    pub fn new(retries : isize) -> Self {
-        S { retries
-   
-          }
-    }
-}
-
-impl Score for S {
-    fn score_guess(&mut self, guess : &Vec<Guess>) {
-
-    }
-
-    fn should_continue(&self) -> bool {
-        self.retries > 0
-    }
-    
-    fn score(&self) -> i64 {
-        self.retries.try_into().unwrap()
     }
 }
 
