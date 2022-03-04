@@ -17,7 +17,7 @@ fn read_line() -> io::Result<String> {
 
 fn main() -> io::Result<()> {
     let mut words = Standard::new();
-    let mut game = standard_game::G::new(words.get_word(4).ok_or(Error::new(ErrorKind::Other, "failed to get word"))?.to_string());
+    let mut game = standard_game::G::new(words.get_word(4).ok_or(Error::new(ErrorKind::Other, "failed to get word"))?);
 
     loop {
         let letter_count = game.letter_count();

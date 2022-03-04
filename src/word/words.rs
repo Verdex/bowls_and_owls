@@ -1,6 +1,8 @@
 
 use std::collections::HashMap;
 
+// TODO it would be nice if the hash map get_words creates is also static
+
 static WORDS : &'static str = include_str!("words.txt");
 
 pub fn get_words() -> HashMap<usize, Vec<&'static str>> {
