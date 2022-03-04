@@ -4,8 +4,9 @@ mod word;
 
 mod standard_game;
 
-use std::io;
+use std::io::{self, Error, ErrorKind};
 use crate::game::{Game, Guess};
+use crate::word::Standard;
 
 fn read_line() -> io::Result<String> {
     let mut s = String::new();
@@ -14,9 +15,9 @@ fn read_line() -> io::Result<String> {
 }
 
 
-
 fn main() -> io::Result<()> {
-    let mut game = standard_game::G::new();
+    let mut words = Standard::new();
+    let mut game = standard_game::G::new(words.word(4).ok_or(Error::new(ErrorKind::Other, "failed to get word"))?.to_string());
 
     loop {
         let letter_count = game.letter_count();

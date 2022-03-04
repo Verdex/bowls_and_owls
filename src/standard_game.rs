@@ -9,12 +9,11 @@ pub struct G {
 }
 
 impl G {
-    pub fn new() -> Self {
-        let mut words = Standard::new();
-        let current = words.word(5).to_string();
-        G { words
-          , current 
-          , length: 5
+    pub fn new(initial_word : String) -> Self {
+        let length = initial_word.len();
+        G { words: Standard::new()
+          , current: initial_word
+          , length
           }
     }
 }
@@ -48,9 +47,16 @@ impl Game for G {
         self.current.len()
     }
 
-    fn next_word(&mut self) {
+    fn next_word(&mut self) -> bool {
         self.length += 1;
-        self.current = self.words.word(self.length).to_string();
+
+        let next = match self.words.word(self.length) {
+            Some(w) => w.to_string(),
+            None => { return false; },
+        };
+
+        self.current = next; 
+        true
     }
 }
 
