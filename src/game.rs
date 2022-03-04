@@ -50,6 +50,7 @@ pub trait Game {
     fn evaluate_guess(&mut self, user_guess : &str) -> Vec<Guess>;
     fn letter_count(&self) -> usize;
     fn next_word(&mut self) -> bool;
+    // TODO:  score
 }
 
 

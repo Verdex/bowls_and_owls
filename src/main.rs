@@ -26,6 +26,7 @@ fn main() -> io::Result<()> {
             let mut line = read_line()?;
             let mut input = line.trim_end();
             while input.len() != letter_count {
+                // TODO tell the user that their letter count was wrong
                 line = read_line()?;
                 input = line.trim_end();
             }
@@ -34,11 +35,13 @@ fn main() -> io::Result<()> {
             let guess_output = game::format_guess(&guess);
 
             println!("\t\t{}", guess_output);
+            // TODO display all used letters
 
             if guess.iter().all(|x| matches!(x, Guess::Correct(_))) {
                 break;
             }
         }
+        // TODO tell the user that they're on a new word
         game.next_word();
     }
     Ok(())

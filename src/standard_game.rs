@@ -38,4 +38,11 @@ impl<'a> Game for G<'a> {
         self.current = next; 
         true
     }
+
+    /* TODO score ideas: 
+        * take letter frequency into account (?)
+        * number of turns
+        * number of wrong letters 
+            * hard to tell which is more impressive ... eliminating lots of letters with few words is cool, but so is guessing with limited info
+    */
 }
