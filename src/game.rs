@@ -25,7 +25,7 @@ pub fn evaluate_guess(answer : &str, user_guess : &str) -> Vec<Guess> {
 
     let a = answer.chars().collect::<Vec<char>>();
     let u = user_guess.chars().collect::<Vec<char>>();
-    let mut r = a.iter().map(|x| Guess::Wrong(*x)).collect::<Vec<Guess>>();
+    let mut r = u.iter().map(|x| Guess::Wrong(*x)).collect::<Vec<Guess>>();
 
     let mut present = vec![];
     for i in 0..a.len() {
