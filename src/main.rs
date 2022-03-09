@@ -32,6 +32,8 @@ fn main() -> io::Result<()> {
                 input = line.trim_end();
             }
 
+            // TODO need to reject user guesses which do not exist in the word list
+
             let guess = game.evaluate_guess(input);
             let guess_output = game::format_guess(&guess);
 
