@@ -217,6 +217,7 @@ fish
 flea
 flee
 flip
+flow
 folk
 food
 foot
@@ -1238,6 +1239,7 @@ tornado
 torrent
 trumpet
 typical
+uncover
 utilize
 vaguely
 vehicle
@@ -1526,10 +1528,12 @@ regardless
 retirement
 serpentine
 statistics
+subduction
 subjective
 subsidized
 subsidizes
 television
+temptation
 tournament
 ultimately
 understand
@@ -1544,6 +1548,7 @@ appointment
 camouflaged
 cataclysmic
 caterpillar
+circulation
 clairvoyant
 combination
 comfortable
@@ -1577,6 +1582,7 @@ permutation
 pretentious
 problematic
 programming
+pyroclastic
 scaffolding
 screwdriver
 significant
@@ -1615,5 +1621,8 @@ underpinnings
 coincidentally
 implementation
 multiplication
+phosphorescent
 characteristics
 diagonalization
+interchangeable
+phosphorescence
