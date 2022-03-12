@@ -439,6 +439,7 @@ toss
 tree
 true
 tuba
+tuck
 type
 unit
 vein
@@ -542,6 +543,7 @@ cobra
 comet
 conic
 could
+crane
 crash
 crawl
 crazy
@@ -605,6 +607,7 @@ gripe
 grove
 guess
 haste
+hatch
 heart
 heave
 heavy
@@ -786,6 +789,7 @@ trash
 trick
 truck
 trust
+tucks
 under
 upper
 vague
@@ -793,6 +797,7 @@ venue
 video
 virus
 vivid
+watch
 water
 whale
 where
@@ -805,6 +810,7 @@ world
 would
 wreak
 write
+wrong
 yield
 young
 zebra
@@ -858,6 +864,7 @@ chrome
 circle
 clever
 closet
+clutch
 cobolt
 collar
 column
@@ -933,6 +940,7 @@ latter
 linear
 liquid
 loathe
+lowers
 magnet
 manual
 marker
@@ -1055,6 +1063,7 @@ willow
 window
 wither
 wonder
+wrongs
 yellow
 zipper
 acquire
@@ -1079,6 +1088,7 @@ calorie
 capable
 careful
 cartoon
+catches
 caution
 ceiling
 chagrin
@@ -1138,6 +1148,7 @@ general
 glasses
 graphic
 grenade
+hatches
 however
 hunting
 illegal
@@ -1157,6 +1168,7 @@ madness
 magical
 malform
 mandate
+matches
 maximum
 measure
 meeting
@@ -1245,9 +1257,12 @@ vaguely
 vehicle
 version
 visible
+watched
+watches
 weather
 whether
 without
+wronged
 abnormal
 abstract
 accident
@@ -1268,6 +1283,7 @@ building
 business
 calories
 civilian
+clutches
 complete
 compress
 computer
