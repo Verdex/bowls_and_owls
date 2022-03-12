@@ -1061,6 +1061,7 @@ weapon
 weaver
 willow
 window
+winnow
 wither
 wonder
 wrongs
@@ -1243,6 +1244,7 @@ strange
 success
 suggest
 sweater
+tension
 tenuous
 thought
 thunder
@@ -1275,6 +1277,7 @@ approval
 assemble
 asteroid
 atypical
+audience
 backward
 bacteria
 baseball
@@ -1335,6 +1338,7 @@ instruct
 interval
 invasion
 language
+laughter
 magician
 maintain
 material
@@ -1347,6 +1351,7 @@ national
 negative
 neighbor
 orthodox
+painting
 parabola
 paradigm
 parallel
@@ -1469,6 +1474,7 @@ labyrinth
 liability
 lightning
 logistics
+machinery
 malicious
 marathons
 maternity
@@ -1508,6 +1514,7 @@ theoretic
 translate
 transport
 verbalize
+winnowing
 wrestling
 yesterday
 aberration
@@ -1518,6 +1525,7 @@ automobile
 basketball
 calculator
 capitalize
+commercial
 compatible
 compelling
 completely
@@ -1534,6 +1542,7 @@ immaterial
 multiplier
 obliterate
 permission
+playwright
 prediction
 proclaimed
 profession
@@ -1595,6 +1604,8 @@ participant
 passthrough
 performance
 permutation
+playwrights
+playwriting
 pretentious
 problematic
 programming
