@@ -2,7 +2,8 @@
 use std::collections::HashMap;
 use rand::prelude::*;
 
-static WORDS : &'static str = include_str!("words.txt");
+use rwords;
+
 static mut HASH : Option<HashMap<usize, Vec<&'static str>>> = None; 
 
 unsafe fn raw_get_word(length : usize, rng : &mut ThreadRng) -> Option<&'static str> {
@@ -16,7 +17,7 @@ unsafe fn raw_get_word(length : usize, rng : &mut ThreadRng) -> Option<&'static 
     match &HASH {
         None => {
             let mut r : HashMap<usize, Vec<&'static str>> = HashMap::new();
-            for word in WORDS.split('\n') {
+            for word in rwords::WORDS.split('\n') {
                 let w = word.trim_end();
                 let length = w.len();
                 match r.get_mut(&length) {

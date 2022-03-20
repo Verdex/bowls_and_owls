@@ -1,4 +1,6 @@
 
+extern crate rwords;
+
 mod game;
 mod word;
 
