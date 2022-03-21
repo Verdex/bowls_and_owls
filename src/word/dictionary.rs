@@ -46,4 +46,23 @@ impl Standard {
     pub fn get_word(&mut self, length : usize) -> Option<&'static str> {
         unsafe { raw_get_word(length, &mut self.rng) }
     }
+
+    pub fn check_word_exists(&mut self, word : &str) -> bool {
+        unsafe {
+            match &HASH {
+                None => false,
+                Some(h) => {
+                    let maybe_words = h.get(&word.len());
+                    let target_words = match maybe_words {
+                        Some(v) => v,
+                        None => { return false; },
+                    };
+                    match target_words.iter().find(|w| **w == word) {
+                        Some(_) => true,
+                        None => false,
+                    }
+                },
+            }
+        }
+    }
 }
