@@ -1,11 +1,12 @@
 
 extern crate rwords;
 
+use std::collections::HashSet;
+use std::io;
+
 mod game;
 mod word;
 
-use std::collections::HashSet;
-use std::io;
 use crate::game::Guess;
 use crate::word::Standard;
 
