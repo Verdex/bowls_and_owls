@@ -4,8 +4,6 @@ extern crate rwords;
 mod game;
 mod word;
 
-mod standard_game;
-
 use std::collections::HashSet;
 use std::io;
 use crate::game::{Game, Guess};
