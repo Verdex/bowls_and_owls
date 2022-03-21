@@ -23,18 +23,26 @@ fn main() -> io::Result<()> {
 
     loop {
         println!("word size: {}", letter_count);
-        let mut answer = words.get_word(letter_count).expect("failed to get word");
+        let answer = words.get_word(letter_count).expect("failed to get word");
         let mut wrong_letters = HashSet::new();
         loop {
             let mut line = read_line()?;
             let mut input = line.trim_end();
-            while input.len() != letter_count {
-                println!("expected word size: {}", letter_count);
+            loop {
+                
+                if input.len() != letter_count {
+                    println!("expected word size: {}", letter_count);
+                }
+                else if !words.check_word_exists(input) {
+                    println!("word not found in word list");
+                }
+                else {
+                    break;
+                }
+
                 line = read_line()?;
                 input = line.trim_end();
             }
-
-            // TODO need to reject user guesses which do not exist in the word list
 
             let guess = game::evaluate_guess(answer, input);
             let guess_output = game::format_guess(&guess);
@@ -56,7 +64,7 @@ fn main() -> io::Result<()> {
                 break;
             }
         }
-        answer = words.get_word(letter_count).expect("failed to get word");
+        letter_count += 1;
     }
     Ok(())
 }
