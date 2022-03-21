@@ -7,7 +7,7 @@ mod word;
 mod standard_game;
 
 use std::collections::HashSet;
-use std::io::{self, Error, ErrorKind};
+use std::io;
 use crate::game::{Game, Guess};
 use crate::word::Standard;
 
@@ -19,11 +19,12 @@ fn read_line() -> io::Result<String> {
 
 fn main() -> io::Result<()> {
     let mut words = Standard::new();
-    let mut game = standard_game::G::new(words.get_word(4).ok_or(Error::new(ErrorKind::Other, "failed to get word"))?);
+
+    let mut letter_count = 4;
 
     loop {
-        let letter_count = game.letter_count();
         println!("word size: {}", letter_count);
+        let mut answer = words.get_word(letter_count).expect("failed to get word");
         let mut wrong_letters = HashSet::new();
         loop {
             let mut line = read_line()?;
@@ -36,7 +37,7 @@ fn main() -> io::Result<()> {
 
             // TODO need to reject user guesses which do not exist in the word list
 
-            let guess = game.evaluate_guess(input);
+            let guess = game::evaluate_guess(answer, input);
             let guess_output = game::format_guess(&guess);
 
             for g in guess.iter() {
@@ -56,7 +57,7 @@ fn main() -> io::Result<()> {
                 break;
             }
         }
-        game.next_word();
+        answer = words.get_word(letter_count).expect("failed to get word");
     }
     Ok(())
 }
