@@ -6,7 +6,7 @@ mod word;
 
 use std::collections::HashSet;
 use std::io;
-use crate::game::{Game, Guess};
+use crate::game::Guess;
 use crate::word::Standard;
 
 fn read_line() -> io::Result<String> {
