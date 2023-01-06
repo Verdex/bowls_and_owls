@@ -52,11 +52,12 @@ fn main() -> io::Result<()> {
                 }
             }
 
-            let wrong_letter_output = wrong_letters.iter().map(|c| c.to_string()).collect::<Vec<_>>().join(" ");
+            let mut wrong_letter_output = wrong_letters.iter().map(|c| c.to_string()).collect::<Vec<_>>();
+            wrong_letter_output.sort();
 
             println!("\t\t{}", guess_output);
 
-            println!("\n{}", wrong_letter_output);
+            println!("\n{}", wrong_letter_output.join(" "));
 
             if guess.iter().all(|x| matches!(x, Guess::Correct(_))) {
                 break;
