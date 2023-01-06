@@ -1,6 +1,4 @@
 
-extern crate rwords;
-
 use std::collections::HashSet;
 use std::io;
 
@@ -66,5 +64,4 @@ fn main() -> io::Result<()> {
         }
         letter_count += 1;
     }
-    Ok(())
 }
