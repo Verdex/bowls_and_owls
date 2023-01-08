@@ -144,4 +144,12 @@ mod test {
 
         assert!( matches!(&guess[..], [Guess::Correct(_), Guess::Correct(_), Guess::Wrong(_), Guess::Correct(_)]) );
     }
+
+    #[test]
+    fn evaluate_guess_should_correctly_handle_correct_non_matching_repeat_letters() {
+        use Guess::*;
+        let guess = evaluate_guess("MOXAS", "MOSSY");
+
+        assert_eq!( guess, [Correct('M'), Correct('O'), Present('S'), Wrong('S'), Wrong('Y')] );
+    }
 }
