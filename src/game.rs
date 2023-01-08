@@ -24,27 +24,29 @@ pub fn evaluate_guess(answer : &str, user_guess : &str) -> Vec<Guess> {
         panic!("evaluate guess must verify that answer and user_guess are the same length");
     }
 
-    let a = answer.chars().collect::<Vec<char>>();
-    let u = user_guess.chars().collect::<Vec<char>>();
-    let mut r = u.iter().map(|x| Guess::Wrong(*x)).collect::<Vec<Guess>>();
+    let answer = answer.chars().collect::<Vec<char>>();
+    let user_guess = user_guess.chars().collect::<Vec<char>>();
+    let mut result = user_guess.iter().map(|x| Guess::Wrong(*x)).collect::<Vec<Guess>>();
 
     let mut present = vec![];
-    for i in 0..a.len() {
-        if a[i] == u[i] {
-            r[i] = Guess::Correct(u[i])
+    for i in 0..answer.len() {
+        if answer[i] == user_guess[i] {
+            result[i] = Guess::Correct(user_guess[i])
         }
         else {
-            present.push(a[i]);
+            present.push(answer[i]);
         }
     }
 
-    for i in 0..a.len() {
-        if a[i] != u[i] && present.contains(&u[i]) {
-            r[i] = Guess::Present(u[i])
+    for i in 0..answer.len() {
+        if answer[i] != user_guess[i] && present.contains(&user_guess[i]) {
+            let (index, _) = present.iter().enumerate().find(|(_, v)| **v == user_guess[i]).unwrap();
+            present.remove(index);
+            result[i] = Guess::Present(user_guess[i])
         }
     }
 
-    r
+    result
 }
 
 
