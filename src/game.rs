@@ -1,4 +1,5 @@
 
+#[derive(Debug, PartialEq, Eq)]
 pub enum Guess { 
     Correct(char),
     Present(char),
