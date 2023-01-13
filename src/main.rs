@@ -15,11 +15,25 @@ fn read_line() -> io::Result<String> {
 }
 
 fn main() -> io::Result<()> {
+
+    let args = std::env::args().collect::<Vec<_>>();
+
+    let static_letter_count = if args.len() == 2 { 
+        Some(args[1].parse::<usize>().unwrap())
+    }
+    else {
+        None
+    };
+
     let mut words = Standard::new();
 
     let mut letter_count = 4;
 
     loop {
+        if matches!(static_letter_count, Some(_)) {
+            letter_count = static_letter_count.unwrap();
+        }
+
         println!("word size: {}", letter_count);
         let answer = words.get_word(letter_count).expect("failed to get word");
         let mut wrong_letters = HashSet::new();
