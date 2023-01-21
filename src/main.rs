@@ -61,7 +61,7 @@ fn main() -> io::Result<()> {
 
             for g in guess.iter() {
                 match g { 
-                    Guess::Wrong(letter) => { wrong_letters.insert(*letter); },
+                    Guess::Wrong(letter) if answer.chars().all(|c| c != *letter) => { wrong_letters.insert(*letter); },
                     _ => { },
                 }
             }
