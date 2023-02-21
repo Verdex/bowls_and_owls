@@ -1,16 +1,19 @@
 
 use std::collections::HashMap;
-use rand::prelude::*;
+
+use whim::random::*;
+use whim::rng_algo::*;
 
 use super::words::*;
 
+
 static mut HASH : Option<HashMap<usize, Vec<&'static str>>> = None; 
 
-unsafe fn raw_get_word(length : usize, rng : &mut ThreadRng) -> Option<&'static str> {
+unsafe fn raw_get_word(length : usize, rng : &mut Pcg32Shift) -> Option<&'static str> {
 
-    fn g(h : &HashMap<usize, Vec<&'static str>>, length : usize, rng : &mut ThreadRng) -> Option<&'static str> {
+    fn g(h : &HashMap<usize, Vec<&'static str>>, length : usize, rng : &mut Pcg32Shift) -> Option<&'static str> {
         let words = h.get(&length)?;
-        let index = rng.gen_range(0..words.len());
+        let index = rng.range(0..words.len() as u32) as usize;
         Some(words[index])
     }
 
@@ -34,12 +37,12 @@ unsafe fn raw_get_word(length : usize, rng : &mut ThreadRng) -> Option<&'static 
 }
 
 pub struct Standard {
-    rng : ThreadRng,
+    rng : Pcg32Shift,
 }
 
 impl Standard {
     pub fn new() -> Self {
-        Standard { rng : thread_rng()
+        Standard { rng : Pcg32Shift::new()
                  }
     }
 
