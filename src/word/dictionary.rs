@@ -42,7 +42,9 @@ pub struct Standard {
 
 impl Standard {
     pub fn new() -> Self {
-        Standard { rng : Pcg32Shift::new()
+        use std::time::*;
+        let seed = SystemTime::now().duration_since(SystemTime::UNIX_EPOCH).unwrap().as_secs();
+        Standard { rng : Pcg32Shift::seed(seed)
                  }
     }
 
