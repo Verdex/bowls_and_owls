@@ -71,7 +71,7 @@ fn main() -> io::Result<()> {
 
             println!("\t\t{}", guess_output);
 
-            println!("\n{}", wrong_letter_output.join(" "));
+            println!("\nwrong: {}", wrong_letter_output.join(" "));
 
             if guess.iter().all(|x| matches!(x, Guess::Correct(_))) {
                 break;
