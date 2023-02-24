@@ -1,9 +1,40 @@
 
-#[derive(Debug, PartialEq, Eq, Clone)]
+#[derive(Debug, PartialEq, Eq, Clone, Copy)]
 pub enum Guess { 
     Correct(char),
     Present(char),
     Wrong(char),
+}
+
+fn transpose<T : Copy>(m : &Vec<Vec<T>>) -> Vec<Vec<T>> {
+    if m.len() == 0 { 
+        return vec![];
+    }
+
+    let l = m[0].len();
+
+    let mut ret = vec![];
+    for c in 0..l {
+        let mut col = vec![];
+        for r in 0..m.len() {
+            col.push(m[r][c]);
+        }
+        ret.push(col);
+    }
+
+    ret
+}
+
+pub fn score_history(history : &Vec<Vec<Guess>>) -> f32 {
+    if history.len() == 0 {
+        return 0.0;
+    }
+
+    let word_size = history[0].len();
+
+    
+
+    0.0
 }
 
 pub fn format_guess(guess : &Vec<Guess>) -> String {
@@ -53,6 +84,20 @@ pub fn evaluate_guess(answer : &str, user_guess : &str) -> Vec<Guess> {
 #[cfg(test)]
 mod test {
     use super::*;
+
+    #[test]
+    fn should_transpose() {
+        let m = vec![ vec![1, 2, 3], vec![4, 5, 6] ];
+        let o = transpose(&m);
+        assert_eq!( o.len(), 3 );
+        assert_eq!( o[0].len(), 2 );
+        assert_eq!( o[0][0], 1 );
+        assert_eq!( o[0][1], 4 );
+        assert_eq!( o[1][0], 2 );
+        assert_eq!( o[1][1], 5 );
+        assert_eq!( o[2][0], 3 );
+        assert_eq!( o[2][1], 6 );
+    }
 
     #[test]
     fn should_evaluate_wrong_guess() {
