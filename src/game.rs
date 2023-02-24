@@ -32,6 +32,8 @@ pub fn score_history(history : &Vec<Vec<Guess>>) -> f32 {
 
     let word_size = history[0].len();
 
+    let t = transpose(history);
+
     
 
     0.0
