@@ -7,4 +7,3 @@ edition = "2021"
 
 [dependencies]
 whim = { git = "https://www.github.com/Verdex/whim", version = "0.1.0", tag = "release-0.1.0" }
-renounce = { git = "https://www.github.com/Verdex/renounce", version = "0.1.0", tag = "release-0.1.0" }

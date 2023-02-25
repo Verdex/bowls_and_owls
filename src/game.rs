@@ -25,18 +25,41 @@ fn transpose<T : Copy>(m : &Vec<Vec<T>>) -> Vec<Vec<T>> {
     ret
 }
 
+fn score_wrong(history : &Vec<Vec<Guess>>) -> f32 {
+    use std::collections::HashSet;
+    let mut wrong = HashSet::new();
+    let mut total = 0.0;
+    let mut index = 1;
+    for row in history {
+        for w in row.iter().filter(|x| match x { Guess::Wrong(_) => true, _ => false})
+                           .map(|x| match x { Guess::Wrong(x) => x, _ => panic!("!"), }) {
+            if wrong.insert(w) {
+                total += (1f32 / 26.0) * 0.5f32.powi( index );
+            }
+        }
+        index += 1;
+    }
+    total
+}
+
 pub fn score_history(history : &Vec<Vec<Guess>>) -> f32 {
     if history.len() == 0 {
         return 0.0;
     }
 
-    let word_size = history[0].len();
+    let word_size = history[0].len() as f32;
 
-    let t = transpose(history);
+    let columns = transpose(history);
 
-    
+    let correct_score : f32 
+        = columns.iter().map(|col| col.iter()
+                                      .enumerate()
+                                      .find(|(_, g)| match g { Guess::Correct(_) => true, _ => false }))
+                        .map(|x| x.map_or(0.0, |(i, _)| (1.0 / word_size) * 0.5f32.powi((i + 1) as i32)))
+                        .sum();
+    let wrong_score = score_wrong(&history);
 
-    0.0
+    wrong_score + correct_score
 }
 
 pub fn format_guess(guess : &Vec<Guess>) -> String {
