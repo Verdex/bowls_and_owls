@@ -37,6 +37,7 @@ fn main() -> io::Result<()> {
         println!("word size: {}", letter_count);
         let answer = words.get_word(letter_count).expect("failed to get word");
         let mut wrong_letters = HashSet::new();
+        let mut history : Vec<Vec<Guess>> = vec![];
         loop {
             let mut line = read_line()?;
             let mut input = line.trim_end();
@@ -57,6 +58,7 @@ fn main() -> io::Result<()> {
             }
 
             let guess = game::evaluate_guess(answer, input);
+            history.push(guess.clone());
             let guess_output = game::format_guess(&guess);
 
             for g in guess.iter() {
@@ -72,6 +74,7 @@ fn main() -> io::Result<()> {
             println!("\t\t{}", guess_output);
 
             println!("\nwrong: {}", wrong_letter_output.join(" "));
+            println!("\nscore: {}", game::score_history(&history));
 
             if guess.iter().all(|x| matches!(x, Guess::Correct(_))) {
                 break;
