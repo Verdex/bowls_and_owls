@@ -32,7 +32,7 @@ fn score_wrong(history : &Vec<Vec<Guess>>) -> f32 {
     let mut index = 1;
     for row in history {
         for w in row.iter().filter(|x| match x { Guess::Wrong(_) => true, _ => false})
-                           .map(|x| match x { Guess::Wrong(x) => x, _ => panic!("!"), }) {
+                           .map(|x| match x { Guess::Wrong(x) => x, _ => unreachable!(), }) {
             if wrong.insert(w) {
                 total += (1f32 / 26.0) * 0.5f32.powi( index );
             }
@@ -40,6 +40,23 @@ fn score_wrong(history : &Vec<Vec<Guess>>) -> f32 {
         index += 1;
     }
     total
+}
+
+fn score_present(columns : &Vec<Vec<Guess>>) -> f32 {
+    let presents = columns.iter().map(|col| col.iter() 
+                                               .enumerate()
+                                               .filter(|(_, g)| match g { Guess::Present(_) => true, _ => false })
+                                               .map(|(i, g)| match g { Guess::Present(c) => (i, c), _ => unreachable!() })
+                                               .collect::<Vec<_>>());
+
+    let mut tot = 0f32;
+    for mut p in presents {
+        p.sort_by_key(|(_, c)| *c);
+        p.dedup_by_key(|(_, c)| *c);
+        tot += p.iter().map(|(i, _)| (1f32 / 26f32) * (1f32 / 5f32) * 0.5f32.powi( *i as i32 ) ).sum::<f32>();
+    }
+
+    tot
 }
 
 pub fn score_history(history : &Vec<Vec<Guess>>) -> f32 {
@@ -58,8 +75,9 @@ pub fn score_history(history : &Vec<Vec<Guess>>) -> f32 {
                         .map(|x| x.map_or(0.0, |(i, _)| (1.0 / word_size) * 0.5f32.powi((i + 1) as i32)))
                         .sum();
     let wrong_score = score_wrong(&history);
+    let present_score = score_present(&columns);
 
-    wrong_score + correct_score
+    wrong_score + correct_score + present_score
 }
 
 pub fn format_guess(guess : &Vec<Guess>) -> String {
